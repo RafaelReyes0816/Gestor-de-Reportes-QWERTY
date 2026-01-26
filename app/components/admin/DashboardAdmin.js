@@ -18,7 +18,7 @@ import { obtenerTodosReportes } from "../../../lib/supabase-helpers";
 import { COLORS } from "../../../lib/theme/colors";
 
 const ESTADOS = ["Pendiente", "En Proceso", "Resuelto", "Cancelado"];
-const TIPOS = ["Urgente", "Importante", "Informativo", "Emergencia"];
+const TIPOS = ["Urgente", "Importante", "Informativo"];
 
 function formatFecha(ts) {
   if (!ts) return "";
