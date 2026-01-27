@@ -77,17 +77,15 @@ export default function LoginPrincipal() {
     >
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>GESTOR DE DISTURBIOS</Text>
-          <Text style={styles.headerSubtitle}>TARIJA</Text>
+          <Text style={styles.headerTitle}>Gestor de Reportes</Text>
+          <Text style={styles.headerSubtitle}>Tarija</Text>
         </View>
 
         <View style={styles.body}>
           {!modo ? (
             <>
               <Text style={styles.welcomeText}>Bienvenido</Text>
-              <Text style={styles.subtitleText}>
-                Selecciona tu tipo de acceso
-              </Text>
+              <Text style={styles.subtitleText}>Elige tipo de acceso</Text>
 
               <View style={styles.optionsContainer}>
                 <TouchableOpacity
@@ -96,9 +94,7 @@ export default function LoginPrincipal() {
                 >
                   <Text style={styles.optionIcon}>👤</Text>
                   <Text style={styles.optionTitle}>Administrador</Text>
-                  <Text style={styles.optionSubtitle}>
-                    Gestión de reportes
-                  </Text>
+                  <Text style={styles.optionSubtitle}>Reportes</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -107,9 +103,7 @@ export default function LoginPrincipal() {
                 >
                   <Text style={styles.optionIcon}>📱</Text>
                   <Text style={styles.optionTitle}>Usuario</Text>
-                  <Text style={styles.optionSubtitle}>
-                    Reportar incidentes
-                  </Text>
+                  <Text style={styles.optionSubtitle}>Reportar</Text>
                 </TouchableOpacity>
               </View>
             </>
@@ -119,7 +113,7 @@ export default function LoginPrincipal() {
                 <TouchableOpacity onPress={handleVolver} style={styles.backButton}>
                   <Text style={styles.backButtonText}>← Volver</Text>
                 </TouchableOpacity>
-                <Text style={styles.loginTitle}>Acceso Administrador</Text>
+                <Text style={styles.loginTitle}>Admin</Text>
                 <View style={{ width: 60 }} />
               </View>
 
@@ -192,11 +186,6 @@ export default function LoginPrincipal() {
             </>
           )}
         </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-          <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -212,31 +201,31 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: COLORS.azulClaro,
-    paddingVertical: 20,
-    paddingHorizontal: 24,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     alignItems: "center",
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
     shadowColor: COLORS.negro,
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
   },
   headerTitle: {
     color: COLORS.negro,
-    fontSize: 24,
-    fontWeight: "900",
+    fontSize: 20,
+    fontWeight: "800",
     textAlign: "center",
-    marginBottom: 4,
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
     color: COLORS.negro,
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "600",
     textAlign: "center",
-    opacity: 0.9,
+    marginTop: 2,
+    opacity: 0.85,
   },
   body: {
     flex: 1,
@@ -393,33 +382,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "900",
     letterSpacing: 0.5,
-  },
-  footer: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 14,
-    paddingHorizontal: 24,
-    alignItems: "center",
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    shadowColor: COLORS.negro,
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: -4 },
-    elevation: 8,
-  },
-  footerTitle: {
-    color: COLORS.negro,
-    fontSize: 13,
-    fontWeight: "800",
-    textAlign: "center",
-    marginBottom: 4,
-    letterSpacing: 0.3,
-  },
-  footerText: {
-    color: COLORS.negro,
-    fontSize: 11,
-    fontWeight: "600",
-    textAlign: "center",
-    opacity: 0.85,
   },
 });

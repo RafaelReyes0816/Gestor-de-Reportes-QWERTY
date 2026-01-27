@@ -123,8 +123,8 @@ export default function Inicio() {
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTitle}>GESTOR DE DISTURBIOS</Text>
-            <Text style={styles.headerSubtitle}>TARIJA</Text>
+            <Text style={styles.headerTitle}>Gestor de Reportes</Text>
+            <Text style={styles.headerSubtitle}>Tarija</Text>
             {usuarioName ? (
               <Text style={styles.headerUser}>Usuario: {usuarioName}</Text>
             ) : null}
@@ -135,7 +135,10 @@ export default function Inicio() {
         </View>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.body}>
           <Text style={styles.title}>Reporte Rápido</Text>
 
@@ -168,11 +171,6 @@ export default function Inicio() {
         </View>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-        <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-      </View>
-
       <ModalMensaje
         visible={modalVisible}
         tipo={modalTipo}
@@ -191,15 +189,15 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: COLORS.azulClaro,
-    paddingVertical: 24,
-    paddingHorizontal: 24,
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
     shadowColor: COLORS.negro,
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
   },
   headerContent: {
     flexDirection: "row",
@@ -212,19 +210,18 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: COLORS.negro,
-    fontSize: 26,
-    fontWeight: "900",
+    fontSize: 20,
+    fontWeight: "800",
     textAlign: "center",
-    marginBottom: 4,
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
     color: COLORS.negro,
-    fontSize: 17,
+    fontSize: 13,
     fontWeight: "600",
     textAlign: "center",
-    marginBottom: 4,
-    opacity: 0.9,
+    marginTop: 2,
+    opacity: 0.85,
   },
   headerUser: {
     color: COLORS.negro,
@@ -255,6 +252,7 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingTop: 24,
+    paddingBottom: 24,
   },
   body: {
     flex: 1,
@@ -366,34 +364,6 @@ const styles = StyleSheet.create({
     color: COLORS.azulClaro,
     fontSize: 14,
     fontWeight: "600",
-  },
-  footer: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 26,
-    paddingHorizontal: 24,
-    alignItems: "center",
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    shadowColor: COLORS.negro,
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: -4 },
-    elevation: 8,
-  },
-  footerTitle: {
-    color: COLORS.negro,
-    fontSize: 18,
-    fontWeight: "900",
-    textAlign: "center",
-    marginBottom: 12,
-    letterSpacing: 0.3,
-  },
-  footerText: {
-    color: COLORS.negro,
-    fontSize: 14,
-    fontWeight: "600",
-    textAlign: "center",
-    opacity: 0.85,
   },
 });
 

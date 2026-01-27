@@ -89,15 +89,13 @@ export default function DetalleReporteAdmin() {
   );
 
   const handleCambiarEstado = async (nuevoEstado) => {
+    setModalEstado(false);
+    if (reporte?.estado === nuevoEstado) return;
     setSaving(true);
     try {
       const resultado = await actualizarEstadoReporte(id, nuevoEstado, adminName);
       console.log("[DetalleReporteAdmin] Estado actualizado:", resultado);
-      
-      // Recargar datos del reporte para obtener la versión actualizada
       await cargarDatos();
-      
-      setModalEstado(false);
       Alert.alert("Éxito", "Estado actualizado correctamente");
     } catch (error) {
       console.error("[DetalleReporteAdmin] Error al cambiar estado:", error);
@@ -168,7 +166,7 @@ export default function DetalleReporteAdmin() {
         <TouchableOpacity onPress={() => router.back()}>
           <Text style={styles.backText}>← Volver</Text>
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Detalle del Reporte</Text>
+        <Text style={styles.headerTitle}>Detalle</Text>
         <View style={{ width: 60 }} />
       </View>
 
@@ -378,18 +376,18 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.azulOscuro },
   header: {
     backgroundColor: COLORS.azulClaro,
-    paddingVertical: 20,
-    paddingHorizontal: 24,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
     shadowColor: COLORS.negro,
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
   },
   backText: {
     color: COLORS.negro,

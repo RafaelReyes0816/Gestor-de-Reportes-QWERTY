@@ -34,8 +34,8 @@ export default function Configuraciones() {
       ]}
     >
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>GESTOR DE DISTURBIOS</Text>
-        <Text style={styles.headerSubtitle}>TARIJA</Text>
+        <Text style={styles.headerTitle}>Gestor de Reportes</Text>
+        <Text style={styles.headerSubtitle}>Tarija</Text>
       </View>
 
       <ScrollView
@@ -82,11 +82,6 @@ export default function Configuraciones() {
           </View>
         </View>
       </ScrollView>
-
-      <View style={styles.footer}>
-        <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-        <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-      </View>
     </SafeAreaView>
   );
 }
@@ -98,27 +93,31 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: COLORS.azulClaro,
-    paddingVertical: 32,
+    paddingVertical: 16,
     paddingHorizontal: 20,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.12,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
   headerTitle: {
     color: COLORS.negro,
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: "800",
     textAlign: "center",
-    marginBottom: 4,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
     color: COLORS.negro,
-    fontSize: 18,
-    fontWeight: "500",
+    fontSize: 13,
+    fontWeight: "600",
     textAlign: "center",
+    marginTop: 2,
+    opacity: 0.85,
   },
   scrollContent: {
     flexGrow: 1,
@@ -179,30 +178,6 @@ const styles = StyleSheet.create({
     color: COLORS.negro,
     fontSize: 18,
     fontWeight: "700",
-  },
-  footer: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 22,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: -2 },
-    elevation: 6,
-  },
-  footerTitle: {
-    color: COLORS.negro,
-    fontSize: 18,
-    fontWeight: "900",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  footerText: {
-    color: COLORS.negro,
-    fontSize: 14,
-    fontWeight: "500",
-    textAlign: "center",
   },
 });
 

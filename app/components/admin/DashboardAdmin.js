@@ -48,17 +48,6 @@ export default function DashboardAdmin() {
   const [filtroTipo, setFiltroTipo] = useState(null);
   const [modalFiltros, setModalFiltros] = useState(false);
 
-  useEffect(() => {
-    cargarReportes();
-  }, [cargarReportes]);
-
-  // Recargar reportes cuando la pantalla recibe foco (al volver del detalle)
-  useFocusEffect(
-    useCallback(() => {
-      cargarReportes();
-    }, [cargarReportes])
-  );
-
   const cargarReportes = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -76,6 +65,37 @@ export default function DashboardAdmin() {
       setLoading(false);
     }
   }, [filtroEstado, filtroTipo]);
+
+  // Cargar al montar y cada vez que cambian los filtros (selección o limpiar)
+  useEffect(() => {
+    let cancelado = false;
+    setLoading(true);
+    setError(null);
+    const filtros = {};
+    if (filtroEstado) filtros.estado = filtroEstado;
+    if (filtroTipo) filtros.tipo_incidente = filtroTipo;
+    obtenerTodosReportes(filtros)
+      .then((data) => {
+        if (!cancelado) setReportes(Array.isArray(data) ? data : []);
+      })
+      .catch((e) => {
+        if (!cancelado) {
+          setError(e?.message || "Error al cargar reportes");
+          setReportes([]);
+        }
+      })
+      .finally(() => {
+        if (!cancelado) setLoading(false);
+      });
+    return () => { cancelado = true; };
+  }, [filtroEstado, filtroTipo]);
+
+  // Recargar cuando la pantalla recibe foco (al volver del detalle)
+  useFocusEffect(
+    useCallback(() => {
+      cargarReportes();
+    }, [cargarReportes])
+  );
 
   const estadisticas = useMemo(() => {
     const total = reportes.length;
@@ -153,8 +173,8 @@ export default function DashboardAdmin() {
     >
       <View style={styles.header}>
         <View>
-          <Text style={styles.headerTitle}>PANEL ADMINISTRADOR</Text>
-          <Text style={styles.headerSubtitle}>Bienvenido, {adminName}</Text>
+          <Text style={styles.headerTitle}>Admin</Text>
+          <Text style={styles.headerSubtitle}>{adminName}</Text>
         </View>
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Text style={styles.logoutText}>Salir</Text>
@@ -260,6 +280,7 @@ export default function DashboardAdmin() {
                   ]}
                   onPress={() => {
                     setFiltroEstado(filtroEstado === estado ? null : estado);
+                    setModalFiltros(false);
                   }}
                 >
                   <Text
@@ -285,6 +306,7 @@ export default function DashboardAdmin() {
                   ]}
                   onPress={() => {
                     setFiltroTipo(filtroTipo === tipo ? null : tipo);
+                    setModalFiltros(false);
                   }}
                 >
                   <Text
@@ -316,31 +338,31 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.azulOscuro },
   header: {
     backgroundColor: COLORS.azulClaro,
-    paddingVertical: 24,
-    paddingHorizontal: 24,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
     shadowColor: COLORS.negro,
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
   },
   headerTitle: {
     color: COLORS.negro,
-    fontSize: 22,
-    fontWeight: "900",
-    letterSpacing: 0.5,
+    fontSize: 20,
+    fontWeight: "800",
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
     color: COLORS.negro,
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "600",
-    marginTop: 4,
-    opacity: 0.9,
+    marginTop: 2,
+    opacity: 0.85,
   },
   logoutButton: {
     backgroundColor: COLORS.rojo,
