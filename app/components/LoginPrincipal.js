@@ -8,9 +8,13 @@ import {
   StyleSheet,
   ActivityIndicator,
   Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 import { useAdmin } from "../../lib/context/AdminContext";
 import { COLORS } from "../../lib/theme/colors";
 
@@ -25,6 +29,7 @@ export default function LoginPrincipal() {
   const [modo, setModo] = useState(null); // 'admin' | 'usuario' | null
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [mostrarClave, setMostrarClave] = useState(false);
 
   const handleSeleccionarModo = (tipo) => {
     setModo(tipo);
@@ -81,7 +86,7 @@ export default function LoginPrincipal() {
           <Text style={styles.headerSubtitle}>Tarija</Text>
         </View>
 
-        <View style={styles.body}>
+        <View style={[styles.body, modo && styles.bodyForm]}>
           {!modo ? (
             <>
               <Text style={styles.welcomeText}>Bienvenido</Text>
@@ -108,49 +113,73 @@ export default function LoginPrincipal() {
               </View>
             </>
           ) : modo === "admin" ? (
-            <>
-              <View style={styles.loginHeader}>
-                <TouchableOpacity onPress={handleVolver} style={styles.backButton}>
-                  <Text style={styles.backButtonText}>← Volver</Text>
-                </TouchableOpacity>
-                <Text style={styles.loginTitle}>Admin</Text>
-                <View style={{ width: 60 }} />
-              </View>
-
-              <View style={styles.loginForm}>
-                <View style={styles.userInfo}>
-                  <Text style={styles.userInfoLabel}>Administrador:</Text>
-                  <Text style={styles.userInfoName}>{ADMIN_NAME}</Text>
+            <KeyboardAvoidingView
+              style={styles.keyboardWrap}
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
+              keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+            >
+              <ScrollView
+                style={styles.formScroll}
+                contentContainerStyle={styles.formScrollContent}
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={false}
+              >
+                <View style={styles.loginHeader}>
+                  <TouchableOpacity onPress={handleVolver} style={styles.backButton}>
+                    <Text style={styles.backButtonText}>← Volver</Text>
+                  </TouchableOpacity>
+                  <Text style={styles.loginTitle}>Admin</Text>
+                  <View style={{ width: 60 }} />
                 </View>
 
-                <View style={styles.inputGroup}>
-                  <Text style={styles.label}>Código de Acceso</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={code}
-                    onChangeText={setCode}
-                    placeholder="Ingresa el código"
-                    placeholderTextColor={COLORS.gris}
-                    secureTextEntry
-                    autoCapitalize="none"
-                    editable={!loading}
-                    autoFocus
-                  />
-                </View>
+                <View style={styles.loginForm}>
+                  <View style={styles.userInfo}>
+                    <Text style={styles.userInfoLabel}>Administrador:</Text>
+                    <Text style={styles.userInfoName}>{ADMIN_NAME}</Text>
+                  </View>
 
-                <TouchableOpacity
-                  style={[styles.button, loading && styles.buttonDisabled]}
-                  onPress={handleLoginAdmin}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <ActivityIndicator color={COLORS.blanco} />
-                  ) : (
-                    <Text style={styles.buttonText}>Ingresar</Text>
-                  )}
-                </TouchableOpacity>
-              </View>
-            </>
+                  <View style={styles.inputGroup}>
+                    <Text style={styles.label}>Código de Acceso</Text>
+                    <View style={styles.inputRow}>
+                      <TextInput
+                        style={styles.inputConClave}
+                        value={code}
+                        onChangeText={setCode}
+                        placeholder="Ingresa el código"
+                        placeholderTextColor={COLORS.gris}
+                        secureTextEntry={!mostrarClave}
+                        autoCapitalize="none"
+                        editable={!loading}
+                        autoFocus
+                      />
+                      <TouchableOpacity
+                        style={styles.eyeButton}
+                        onPress={() => setMostrarClave((v) => !v)}
+                        hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+                      >
+                        <Ionicons
+                          name={mostrarClave ? "eye-off-outline" : "eye-outline"}
+                          size={24}
+                          color={COLORS.gris}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  <TouchableOpacity
+                    style={[styles.button, loading && styles.buttonDisabled]}
+                    onPress={handleLoginAdmin}
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <ActivityIndicator color={COLORS.blanco} />
+                    ) : (
+                      <Text style={styles.buttonText}>Ingresar</Text>
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </KeyboardAvoidingView>
           ) : (
             <>
               <View style={styles.loginHeader}>
@@ -231,6 +260,21 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     justifyContent: "center",
+  },
+  bodyForm: {
+    justifyContent: "flex-start",
+    paddingTop: 16,
+  },
+  keyboardWrap: {
+    flex: 1,
+    width: "100%",
+  },
+  formScroll: {
+    flex: 1,
+  },
+  formScrollContent: {
+    flexGrow: 1,
+    paddingBottom: 40,
   },
   welcomeText: {
     color: COLORS.blanco,
@@ -340,6 +384,32 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 12,
     letterSpacing: 0.3,
+  },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: COLORS.azulMedio,
+    borderWidth: 2,
+    borderColor: COLORS.azulClaro,
+    borderRadius: 16,
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  inputConClave: {
+    flex: 1,
+    paddingVertical: 16,
+    paddingLeft: 20,
+    paddingRight: 12,
+    color: COLORS.blanco,
+    fontSize: 16,
+  },
+  eyeButton: {
+    padding: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
     backgroundColor: COLORS.azulMedio,

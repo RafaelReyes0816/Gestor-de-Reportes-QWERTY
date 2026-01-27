@@ -5,7 +5,8 @@ import { COLORS } from "../../lib/theme/colors";
 
 export default function UsuarioLayout() {
   const insets = useSafeAreaInsets();
-  const tabBarPaddingBottom = Math.max(insets.bottom, 10);
+  const bottomInset = Math.max(insets.bottom, 4);
+  const tabBarHeight = 48 + bottomInset;
 
   return (
     <Tabs
@@ -16,23 +17,24 @@ export default function UsuarioLayout() {
         tabBarStyle: {
           backgroundColor: COLORS.azulOscuro,
           borderTopWidth: 0,
-          borderTopColor: "rgba(255,255,255,0.1)",
-          height: 60 + tabBarPaddingBottom,
-          paddingBottom: tabBarPaddingBottom,
-          paddingTop: 10,
-          shadowColor: COLORS.negro,
-          shadowOpacity: 0.2,
-          shadowRadius: 12,
-          shadowOffset: { width: 0, height: -4 },
-          elevation: 10,
+          borderLeftWidth: 0,
+          borderRightWidth: 0,
+          height: tabBarHeight,
+          minHeight: tabBarHeight,
+          paddingBottom: bottomInset,
+          paddingTop: 6,
+          elevation: 0,
+          shadowOpacity: 0,
+          shadowRadius: 0,
+          overflow: "hidden",
         },
         tabBarLabelStyle: {
-          fontSize: 13,
+          fontSize: 12,
           fontWeight: "700",
-          marginTop: 4,
+          marginTop: 2,
         },
         tabBarIconStyle: {
-          marginTop: 4,
+          marginTop: 2,
         },
       }}
     >
