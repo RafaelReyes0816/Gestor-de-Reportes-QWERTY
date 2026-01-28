@@ -173,7 +173,7 @@ export default function DashboardAdmin() {
           <Text style={styles.statLabel}>Pendientes</Text>
         </View>
         <View style={styles.statCard}>
-          <Text style={[styles.statNumber, { color: COLORS.azulClaro }]}>
+          <Text style={[styles.statNumber, { color: COLORS.naranja }]}>
             {estadisticas.porEstado?.["En Proceso"] || 0}
           </Text>
           <Text style={styles.statLabel}>En Proceso</Text>
@@ -210,7 +210,7 @@ export default function DashboardAdmin() {
 
       {loading ? (
         <View style={styles.center}>
-          <ActivityIndicator size="large" color={COLORS.azulClaro} />
+          <ActivityIndicator size="large" color={COLORS.reportePrincipal} />
           <Text style={styles.centerText}>Cargando reportes...</Text>
         </View>
       ) : error ? (
@@ -313,9 +313,9 @@ export default function DashboardAdmin() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: COLORS.azulOscuro },
+  safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
     paddingVertical: 24,
     paddingHorizontal: 24,
     flexDirection: "row",
@@ -323,20 +323,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomLeftRadius: 32,
     borderBottomRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
     elevation: 8,
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 22,
     fontWeight: "900",
     letterSpacing: 0.5,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 15,
     fontWeight: "600",
     marginTop: 4,
@@ -347,7 +347,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 18,
     borderRadius: 16,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -366,13 +366,13 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderRadius: 20,
     padding: 16,
     alignItems: "center",
     borderWidth: 1,
     borderColor: "rgba(102,178,255,0.2)",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.1,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
@@ -398,14 +398,14 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   filterButton: {
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderWidth: 2.5,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
     borderRadius: 18,
     paddingVertical: 12,
     paddingHorizontal: 20,
     flex: 1,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.1,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -423,14 +423,14 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     paddingVertical: 12,
     paddingHorizontal: 20,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
     elevation: 3,
   },
   clearButtonText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontWeight: "800",
     fontSize: 15,
   },
@@ -452,13 +452,13 @@ const styles = StyleSheet.create({
   },
   retryButton: {
     marginTop: 16,
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.naranja, // Naranja que combina
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 12,
   },
   retryButtonText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontWeight: "700",
   },
   emptyText: {
@@ -474,7 +474,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1.5,
     borderColor: "rgba(102,178,255,0.15)",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 5 },
@@ -497,14 +497,14 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 20,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
     elevation: 3,
   },
   badgePendiente: { backgroundColor: COLORS.naranja },
-  badgeProceso: { backgroundColor: COLORS.azulClaro },
+  badgeProceso: { backgroundColor: COLORS.naranja }, // Naranja que combina
   badgeResuelto: { backgroundColor: COLORS.verde },
   badgeCancelado: { backgroundColor: COLORS.gris },
   badgeText: {
@@ -526,7 +526,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   cardAdmin: {
-    color: COLORS.azulClaro,
+    color: COLORS.naranja, // Naranja que combina
     fontSize: 13,
     marginTop: 8,
     fontWeight: "700",
@@ -545,7 +545,7 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     padding: 24,
     maxHeight: "80%",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.3,
     shadowRadius: 20,
     shadowOffset: { width: 0, height: 10 },
@@ -554,7 +554,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 24,
     fontWeight: "900",
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     marginBottom: 20,
     letterSpacing: 0.3,
   },
@@ -564,7 +564,7 @@ const styles = StyleSheet.create({
   modalLabel: {
     fontSize: 17,
     fontWeight: "800",
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     marginBottom: 12,
     letterSpacing: 0.3,
   },
@@ -577,31 +577,31 @@ const styles = StyleSheet.create({
   modalItemActive: {
     backgroundColor: "rgba(102,178,255,0.2)",
     borderWidth: 2,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
   },
   modalItemText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 16,
     fontWeight: "600",
   },
   modalItemTextActive: {
-    color: COLORS.azulOscuro,
+    color: COLORS.reportePrincipalOscuro, // Verde oscuro
     fontWeight: "800",
   },
   modalCloseButton: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.naranja, // Naranja que combina
     paddingVertical: 14,
     borderRadius: 18,
     alignItems: "center",
     marginTop: 12,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
     elevation: 4,
   },
   modalCloseButtonText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontWeight: "800",
     fontSize: 17,
     letterSpacing: 0.3,

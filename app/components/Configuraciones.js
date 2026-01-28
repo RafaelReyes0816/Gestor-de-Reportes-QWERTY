@@ -55,7 +55,7 @@ export default function Configuraciones() {
             <View style={styles.item}>
               <Text style={styles.itemText}>Alarmas sonoras</Text>
               <Switch
-                trackColor={{ false: "#767577", true: COLORS.azulClaro }}
+                trackColor={{ false: "#767577", true: COLORS.reportePrincipal }}
                 thumbColor={alarmasSonoras ? COLORS.blanco : "#f4f3f4"}
                 ios_backgroundColor="#767577"
                 onValueChange={setAlarmasSonoras}
@@ -66,7 +66,7 @@ export default function Configuraciones() {
             <View style={styles.item}>
               <Text style={styles.itemText}>Notificaciones Push</Text>
               <Switch
-                trackColor={{ false: "#767577", true: COLORS.azulClaro }}
+                trackColor={{ false: "#767577", true: COLORS.reportePrincipal }}
                 thumbColor={notificacionesPush ? COLORS.blanco : "#f4f3f4"}
                 ios_backgroundColor="#767577"
                 onValueChange={setNotificacionesPush}
@@ -94,28 +94,28 @@ export default function Configuraciones() {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: COLORS.azulOscuro,
+    backgroundColor: COLORS.fondoGrisOscuro,
   },
   header: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
     paddingVertical: 32,
     paddingHorizontal: 20,
     alignItems: "center",
-    shadowColor: "#000",
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 28,
     fontWeight: "800",
     textAlign: "center",
     marginBottom: 4,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 18,
     fontWeight: "500",
     textAlign: "center",
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     padding: 20,
-    backgroundColor: COLORS.azulOscuro,
+    backgroundColor: COLORS.fondoGrisOscuro,
   },
   title: {
     color: COLORS.blanco,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     padding: 18,
     borderRadius: 14,
     marginLeft: 10,
@@ -176,30 +176,30 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   backButtonText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 18,
     fontWeight: "700",
   },
   footer: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.naranja, // Naranja que combina
     paddingVertical: 22,
     paddingHorizontal: 20,
     alignItems: "center",
-    shadowColor: "#000",
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: -2 },
     elevation: 6,
   },
   footerTitle: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 18,
     fontWeight: "900",
     textAlign: "center",
     marginBottom: 10,
   },
   footerText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 14,
     fontWeight: "500",
     textAlign: "center",

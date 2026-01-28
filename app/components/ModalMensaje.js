@@ -17,7 +17,7 @@ export default function ModalMensaje({
       case "error":
         return { color: COLORS.rojo, label: "ERROR" };
       default:
-        return { color: COLORS.azulClaro, label: "INFO" };
+        return { color: COLORS.naranja, label: "INFO" }; // Naranja que combina
     }
   };
 
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.blanco,
     borderRadius: 28,
     overflow: "hidden",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.3,
     shadowRadius: 20,
     shadowOffset: { width: 0, height: 10 },
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 20,
     alignItems: "center",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },

@@ -7,16 +7,16 @@ export default function UsuarioLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: COLORS.azulClaro,
+        tabBarActiveTintColor: COLORS.reportePrincipal, // Verde
         tabBarInactiveTintColor: "rgba(255,255,255,0.6)",
         tabBarStyle: {
-          backgroundColor: COLORS.azulOscuro,
+          backgroundColor: COLORS.fondoGrisOscuro,
           borderTopWidth: 0,
           borderTopColor: "rgba(255,255,255,0.1)",
           height: 70,
           paddingBottom: 10,
           paddingTop: 10,
-          shadowColor: COLORS.negro,
+          shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
           shadowOpacity: 0.2,
           shadowRadius: 12,
           shadowOffset: { width: 0, height: -4 },
@@ -37,7 +37,7 @@ export default function UsuarioLayout() {
         options={{
           title: "Inicio",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
+            <Ionicons name="person-circle" size={size} color={color} />
           ),
         }}
       />
@@ -46,7 +46,7 @@ export default function UsuarioLayout() {
         options={{
           title: "Reportar",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="add-circle" size={size} color={color} />
+            <Ionicons name="people" size={size} color={color} />
           ),
         }}
       />
@@ -55,7 +55,7 @@ export default function UsuarioLayout() {
         options={{
           title: "Historial",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="time" size={size} color={color} />
+            <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />

@@ -33,19 +33,28 @@ const MESES_ES = [
 ];
 
 function buildMesesRecientes(cantidad = 12) {
-  const now = new Date();
+  const añoFijo = 2026; // Año fijo para los meses - todos los meses serán de 2026
   const meses = [];
+  
+  // Empezar desde diciembre 2026 (mes 11) y retroceder
+  // Esto asegura que todos los meses sean de 2026
   for (let i = 0; i < cantidad; i += 1) {
-    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    const year = d.getFullYear();
-    const monthIndex = d.getMonth();
+    let mesIndex = 11 - i; // Empezar desde diciembre (11) y retroceder
+    
+    // Si el mes es negativo, significa que ya pasamos todos los meses de 2026
+    // En ese caso, continuamos desde diciembre hacia atrás
+    if (mesIndex < 0) {
+      mesIndex = 12 + mesIndex; // Ajustar al mes correspondiente
+    }
+    
+    const year = añoFijo; // Todos los meses serán de 2026
 
-    const desde = new Date(year, monthIndex, 1, 0, 0, 0, 0);
-    const hasta = new Date(year, monthIndex + 1, 1, 0, 0, 0, 0);
+    const desde = new Date(year, mesIndex, 1, 0, 0, 0, 0);
+    const hasta = new Date(year, mesIndex + 1, 1, 0, 0, 0, 0);
 
     meses.push({
-      key: `${year}-${String(monthIndex + 1).padStart(2, "0")}`,
-      label: `${MESES_ES[monthIndex]} ${year}`,
+      key: `${year}-${String(mesIndex + 1).padStart(2, "0")}`,
+      label: `${MESES_ES[mesIndex]} ${year}`,
       desdeISO: desde.toISOString(),
       hastaISO: hasta.toISOString(),
     });
@@ -152,7 +161,7 @@ export default function HistorialReportes() {
 
         {loading ? (
           <View style={styles.center}>
-            <ActivityIndicator size="large" color={COLORS.azulClaro} />
+            <ActivityIndicator size="large" color={COLORS.reportePrincipal} />
             <Text style={styles.centerText}>Cargando reportes…</Text>
           </View>
         ) : error ? (
@@ -246,14 +255,14 @@ export default function HistorialReportes() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: COLORS.azulOscuro },
+  safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
     paddingVertical: 24,
     paddingHorizontal: 24,
     borderBottomLeftRadius: 32,
     borderBottomRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
@@ -269,7 +278,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 26,
     fontWeight: "900",
     textAlign: "center",
@@ -277,7 +286,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 17,
     fontWeight: "600",
     textAlign: "center",
@@ -285,7 +294,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   headerUser: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 13,
     fontWeight: "600",
     textAlign: "center",
@@ -298,7 +307,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     borderRadius: 16,
     marginLeft: 12,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -310,16 +319,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     letterSpacing: 0.3,
   },
-  body: { flex: 1, padding: 20, backgroundColor: COLORS.azulOscuro },
+  body: { flex: 1, padding: 20, backgroundColor: COLORS.fondoGrisOscuro },
   monthPicker: {
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderWidth: 2.5,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
     borderRadius: 20,
     paddingVertical: 16,
     paddingHorizontal: 18,
     marginBottom: 18,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
@@ -350,7 +359,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1.5,
     borderColor: "rgba(102,178,255,0.15)",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 5 },
@@ -379,14 +388,14 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 20,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
     elevation: 3,
   },
   badgePendiente: { backgroundColor: COLORS.naranja },
-  badgeOtro: { backgroundColor: COLORS.azulClaro },
+  badgeOtro: { backgroundColor: COLORS.naranja }, // Naranja que combina
   badgeText: {
     color: COLORS.blanco,
     fontWeight: "800",
@@ -394,20 +403,20 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   footer: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.grisOscuro, // Neutralidad
     paddingVertical: 24,
     paddingHorizontal: 24,
     alignItems: "center",
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: -4 },
     elevation: 8,
   },
   footerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
     fontSize: 18,
     fontWeight: "900",
     textAlign: "center",
@@ -415,7 +424,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   footerText: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
     fontSize: 14,
     fontWeight: "600",
     textAlign: "center",
@@ -434,7 +443,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.blanco,
     borderRadius: 28,
     padding: 24,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.3,
     shadowRadius: 20,
     shadowOffset: { width: 0, height: 10 },
@@ -443,7 +452,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 24,
     fontWeight: "900",
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     marginBottom: 20,
     letterSpacing: 0.3,
   },
@@ -456,15 +465,15 @@ const styles = StyleSheet.create({
   modalItemActive: {
     backgroundColor: "rgba(102,178,255,0.2)",
     borderWidth: 2,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
   },
   modalItemText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 17,
     fontWeight: "600",
   },
   modalItemTextActive: {
-    color: COLORS.azulOscuro,
+    color: COLORS.reportePrincipalOscuro, // Verde oscuro
     fontWeight: "800",
   },
 });

@@ -205,26 +205,27 @@ export default function LoginPrincipal() {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: COLORS.azulOscuro,
+    backgroundColor: COLORS.fondoGrisOscuro,
   },
   container: {
     flex: 1,
   },
   header: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 20,
+    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
+    paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: "center",
+    justifyContent: "center",
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
     elevation: 8,
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 24,
     fontWeight: "900",
     textAlign: "center",
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 15,
     fontWeight: "600",
     textAlign: "center",
@@ -262,13 +263,13 @@ const styles = StyleSheet.create({
     gap: 24,
   },
   optionCard: {
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderWidth: 2,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
     borderRadius: 28,
     padding: 32,
     alignItems: "center",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.25,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
@@ -302,7 +303,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
   },
   backButtonText: {
-    color: COLORS.azulClaro,
+    color: COLORS.naranja, // Naranja que combina
     fontSize: 16,
     fontWeight: "700",
   },
@@ -317,14 +318,14 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   userInfo: {
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderRadius: 20,
     padding: 20,
     marginBottom: 28,
     alignItems: "center",
     borderWidth: 1,
     borderColor: "rgba(102,178,255,0.3)",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.1,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
@@ -353,15 +354,15 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   input: {
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderWidth: 2,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
     borderRadius: 16,
     paddingVertical: 16,
     paddingHorizontal: 20,
     color: COLORS.blanco,
     fontSize: 16,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
@@ -379,7 +380,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingVertical: 18,
     alignItems: "center",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.3,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
@@ -395,29 +396,30 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   footer: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 14,
+    backgroundColor: COLORS.grisOscuro, // Neutralidad
+    paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: "center",
+    justifyContent: "center",
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: -4 },
     elevation: 8,
   },
   footerTitle: {
-    color: COLORS.negro,
-    fontSize: 13,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
+    fontSize: 14,
     fontWeight: "800",
     textAlign: "center",
-    marginBottom: 4,
+    marginBottom: 6,
     letterSpacing: 0.3,
   },
   footerText: {
-    color: COLORS.negro,
-    fontSize: 11,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
+    fontSize: 12,
     fontWeight: "600",
     textAlign: "center",
     opacity: 0.85,

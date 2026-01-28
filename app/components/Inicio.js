@@ -187,19 +187,20 @@ export default function Inicio() {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: COLORS.azulOscuro,
+    backgroundColor: COLORS.fondoGrisOscuro,
   },
   header: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 24,
+    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
+    paddingVertical: 16,
     paddingHorizontal: 24,
     borderBottomLeftRadius: 32,
     borderBottomRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
     elevation: 8,
+    justifyContent: "center",
   },
   headerContent: {
     flexDirection: "row",
@@ -209,9 +210,10 @@ const styles = StyleSheet.create({
   headerTextContainer: {
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 26,
     fontWeight: "900",
     textAlign: "center",
@@ -219,7 +221,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 17,
     fontWeight: "600",
     textAlign: "center",
@@ -227,7 +229,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   headerUser: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 13,
     fontWeight: "600",
     textAlign: "center",
@@ -240,7 +242,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     borderRadius: 16,
     marginLeft: 12,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -259,7 +261,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     padding: 24,
-    backgroundColor: COLORS.azulOscuro,
+    backgroundColor: COLORS.fondoGrisOscuro,
   },
   title: {
     color: COLORS.blanco,
@@ -278,7 +280,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.3,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
@@ -308,14 +310,14 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     flex: 1,
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.naranja, // Naranja que combina con verde
     paddingVertical: 18,
     paddingHorizontal: 24,
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     minHeight: 64,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 5 },
@@ -330,16 +332,16 @@ const styles = StyleSheet.create({
   },
   outlineButton: {
     flex: 1,
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderWidth: 2.5,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
     paddingVertical: 18,
     paddingHorizontal: 24,
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
     minHeight: 64,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
@@ -356,41 +358,42 @@ const styles = StyleSheet.create({
     marginTop: 16,
     backgroundColor: "rgba(102,178,255,0.2)",
     borderWidth: 1,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.naranja, // Naranja que combina
     borderRadius: 12,
     paddingVertical: 10,
     paddingHorizontal: 16,
     alignItems: "center",
   },
   adminButtonText: {
-    color: COLORS.azulClaro,
+    color: COLORS.naranja, // Naranja que combina
     fontSize: 14,
     fontWeight: "600",
   },
   footer: {
-    backgroundColor: COLORS.azulClaro,
-    paddingVertical: 26,
+    backgroundColor: COLORS.grisOscuro, // Neutralidad
+    paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: "center",
+    justifyContent: "center",
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: -4 },
     elevation: 8,
   },
   footerTitle: {
-    color: COLORS.negro,
-    fontSize: 18,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
+    fontSize: 16,
     fontWeight: "900",
     textAlign: "center",
-    marginBottom: 12,
+    marginBottom: 6,
     letterSpacing: 0.3,
   },
   footerText: {
-    color: COLORS.negro,
-    fontSize: 14,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
+    fontSize: 12,
     fontWeight: "600",
     textAlign: "center",
     opacity: 0.85,

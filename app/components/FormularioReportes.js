@@ -268,25 +268,44 @@ export default function FormularioReportes() {
           <View style={styles.step}>
             <Text style={styles.stepTitle}>Paso 1: ¿Qué tipo de incidente es?</Text>
             <View style={styles.gap12}>
-              {tiposIncidente.map((tipo) => (
-                <TouchableOpacity
-                  key={tipo.id}
-                  style={styles.radioRow}
-                  onPress={() => setTipoIncidente(tipo.id)}
-                >
-                  <View style={styles.radioOuter}>
-                    <View
-                      style={[
-                        styles.radioDot,
-                        tipoIncidente === tipo.id
-                          ? styles.radioDotOn
-                          : styles.radioDotOff,
-                      ]}
-                    />
-                  </View>
-                  <Text style={styles.radioLabel}>{tipo.label}</Text>
-                </TouchableOpacity>
-              ))}
+              {tiposIncidente.map((tipo) => {
+                const getColorForTipo = (tipoId) => {
+                  switch (tipoId) {
+                    case "urgente":
+                      return COLORS.incidenteUrgente; // Rojo
+                    case "importante":
+                      return COLORS.incidenteImportante; // Naranja
+                    case "informativo":
+                      return COLORS.incidenteInformativo; // Amarillo
+                    default:
+                      return COLORS.reportePrincipal;
+                  }
+                };
+                const tipoColor = getColorForTipo(tipo.id);
+                const isSelected = tipoIncidente === tipo.id;
+                
+                return (
+                  <TouchableOpacity
+                    key={tipo.id}
+                    style={styles.radioRow}
+                    onPress={() => setTipoIncidente(tipo.id)}
+                  >
+                    <View style={styles.radioOuter}>
+                      <View
+                        style={[
+                          styles.radioDot,
+                          isSelected
+                            ? [styles.radioDotOn, { backgroundColor: tipoColor, borderColor: tipoColor }]
+                            : [styles.radioDotOff, { borderColor: tipoColor }],
+                        ]}
+                      />
+                    </View>
+                    <Text style={[styles.radioLabel, isSelected && { color: tipoColor }]}>
+                      {tipo.label}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
 
@@ -348,7 +367,7 @@ export default function FormularioReportes() {
                     </View>
                   ) : (
                     <>
-                      <ActivityIndicator size="large" color={COLORS.azulClaro} />
+                      <ActivityIndicator size="large" color={COLORS.reportePrincipal} />
                       <Text style={styles.mapFallbackText}>Cargando ubicación...</Text>
                     </>
                   )}
@@ -359,7 +378,7 @@ export default function FormularioReportes() {
             <TouchableOpacity
               style={[
                 styles.confirmButton,
-                { backgroundColor: ubicacionConfirmada ? COLORS.verde : COLORS.azulClaro },
+                { backgroundColor: ubicacionConfirmada ? COLORS.verde : COLORS.reportePrincipal },
               ]}
               onPress={handleConfirmarUbicacion}
             >
@@ -453,14 +472,14 @@ export default function FormularioReportes() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: COLORS.azulOscuro },
+  safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro, // Color especial para reportes
     paddingVertical: 24,
     paddingHorizontal: 24,
     borderBottomLeftRadius: 32,
     borderBottomRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
@@ -476,7 +495,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con púrpura oscuro
     fontSize: 26,
     fontWeight: "900",
     textAlign: "center",
@@ -484,7 +503,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con púrpura oscuro
     fontSize: 17,
     fontWeight: "600",
     textAlign: "center",
@@ -492,7 +511,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
   headerUser: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con púrpura oscuro
     fontSize: 13,
     fontWeight: "600",
     textAlign: "center",
@@ -505,7 +524,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     borderRadius: 16,
     marginLeft: 12,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -518,7 +537,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   scrollContent: { flexGrow: 1, paddingTop: 24 },
-  body: { flex: 1, backgroundColor: COLORS.azulOscuro, padding: 24 },
+  body: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro, padding: 24 },
   step: { marginBottom: 32 },
   stepTitle: {
     color: COLORS.blanco,
@@ -541,9 +560,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
   },
   radioDotOn: {
-    backgroundColor: COLORS.azulClaro,
-    borderColor: COLORS.azulClaro,
-    shadowColor: COLORS.azulClaro,
+    // El color se aplica dinámicamente según el tipo
     shadowOpacity: 0.4,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 2 },
@@ -551,7 +568,7 @@ const styles = StyleSheet.create({
   },
   radioDotOff: {
     backgroundColor: "transparent",
-    borderColor: COLORS.azulClaro,
+    // El color del borde se aplica dinámicamente según el tipo
   },
   radioLabel: {
     color: COLORS.blanco,
@@ -563,9 +580,9 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     overflow: "hidden",
     borderWidth: 2.5,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.reportePrincipal, // Color especial para reportes
     marginBottom: 18,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
@@ -574,7 +591,7 @@ const styles = StyleSheet.create({
   map: { height: 300, width: "100%" },
   mapFallback: {
     height: 300,
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     justifyContent: "center",
     alignItems: "center",
     padding: 12,
@@ -586,13 +603,13 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   updateLocationButton: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipal, // Color especial para reportes
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 16,
     alignItems: "center",
     marginTop: 14,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -609,7 +626,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 24,
     alignItems: "center",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
@@ -624,20 +641,20 @@ const styles = StyleSheet.create({
   uploadButton: {
     backgroundColor: COLORS.blanco,
     borderWidth: 3,
-    borderColor: COLORS.azulClaro,
+    borderColor: COLORS.reportePrincipal, // Color especial para reportes
     borderRadius: 20,
     paddingVertical: 18,
     paddingHorizontal: 24,
     alignItems: "center",
     marginBottom: 14,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
   uploadButtonText: {
-    color: COLORS.negro,
+    color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 19,
     fontWeight: "900",
     letterSpacing: 0.5,
@@ -661,13 +678,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: COLORS.azulMedio,
+    backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderRadius: 20,
     padding: 14,
     marginBottom: 14,
     borderWidth: 1,
     borderColor: "rgba(102,178,255,0.2)",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.1,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 3 },
@@ -703,7 +720,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
@@ -722,7 +739,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 56,
     minWidth: 220,
     alignItems: "center",
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.3,
     shadowRadius: 16,
     shadowOffset: { width: 0, height: 8 },
@@ -736,20 +753,20 @@ const styles = StyleSheet.create({
   },
   buttonDisabled: { opacity: 0.6 },
   footer: {
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.grisOscuro, // Neutralidad
     paddingVertical: 26,
     paddingHorizontal: 24,
     alignItems: "center",
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    shadowColor: COLORS.negro,
+    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
     shadowOffset: { width: 0, height: -4 },
     elevation: 8,
   },
   footerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
     fontSize: 18,
     fontWeight: "900",
     textAlign: "center",
@@ -757,7 +774,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   footerText: {
-    color: COLORS.negro,
+    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
     fontSize: 14,
     fontWeight: "600",
     textAlign: "center",
