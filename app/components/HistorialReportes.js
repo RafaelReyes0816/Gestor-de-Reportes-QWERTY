@@ -33,21 +33,15 @@ const MESES_ES = [
 ];
 
 function buildMesesRecientes(cantidad = 12) {
-  const añoFijo = 2026; // Año fijo para los meses - todos los meses serán de 2026
+  // Empezar desde el mes actual del sistema y retroceder "cantidad" meses
+  const ahora = new Date();
   const meses = [];
-  
-  // Empezar desde diciembre 2026 (mes 11) y retroceder
-  // Esto asegura que todos los meses sean de 2026
+
   for (let i = 0; i < cantidad; i += 1) {
-    let mesIndex = 11 - i; // Empezar desde diciembre (11) y retroceder
-    
-    // Si el mes es negativo, significa que ya pasamos todos los meses de 2026
-    // En ese caso, continuamos desde diciembre hacia atrás
-    if (mesIndex < 0) {
-      mesIndex = 12 + mesIndex; // Ajustar al mes correspondiente
-    }
-    
-    const year = añoFijo; // Todos los meses serán de 2026
+    // Crear una fecha nueva para no mutar la original
+    const fecha = new Date(ahora.getFullYear(), ahora.getMonth() - i, 1, 0, 0, 0, 0);
+    const year = fecha.getFullYear();
+    const mesIndex = fecha.getMonth(); // 0-11
 
     const desde = new Date(year, mesIndex, 1, 0, 0, 0, 0);
     const hasta = new Date(year, mesIndex + 1, 1, 0, 0, 0, 0);
@@ -59,6 +53,7 @@ function buildMesesRecientes(cantidad = 12) {
       hastaISO: hasta.toISOString(),
     });
   }
+
   return meses;
 }
 
