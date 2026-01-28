@@ -8,9 +8,13 @@ import {
   StyleSheet,
   ActivityIndicator,
   Alert,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 import { useAdmin } from "../../lib/context/AdminContext";
 import { COLORS } from "../../lib/theme/colors";
 
@@ -25,6 +29,7 @@ export default function LoginPrincipal() {
   const [modo, setModo] = useState(null); // 'admin' | 'usuario' | null
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [mostrarClave, setMostrarClave] = useState(false);
 
   const handleSeleccionarModo = (tipo) => {
     setModo(tipo);
@@ -77,17 +82,15 @@ export default function LoginPrincipal() {
     >
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>GESTOR DE DISTURBIOS</Text>
-          <Text style={styles.headerSubtitle}>TARIJA</Text>
+          <Text style={styles.headerTitle}>Gestor de Reportes</Text>
+          <Text style={styles.headerSubtitle}>Tarija</Text>
         </View>
 
-        <View style={styles.body}>
+        <View style={[styles.body, modo && styles.bodyForm]}>
           {!modo ? (
             <>
               <Text style={styles.welcomeText}>Bienvenido</Text>
-              <Text style={styles.subtitleText}>
-                Selecciona tu tipo de acceso
-              </Text>
+              <Text style={styles.subtitleText}>Elige tipo de acceso</Text>
 
               <View style={styles.optionsContainer}>
                 <TouchableOpacity
@@ -96,9 +99,7 @@ export default function LoginPrincipal() {
                 >
                   <Text style={styles.optionIcon}>👤</Text>
                   <Text style={styles.optionTitle}>Administrador</Text>
-                  <Text style={styles.optionSubtitle}>
-                    Gestión de reportes
-                  </Text>
+                  <Text style={styles.optionSubtitle}>Reportes</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -107,56 +108,78 @@ export default function LoginPrincipal() {
                 >
                   <Text style={styles.optionIcon}>📱</Text>
                   <Text style={styles.optionTitle}>Usuario</Text>
-                  <Text style={styles.optionSubtitle}>
-                    Reportar incidentes
-                  </Text>
+                  <Text style={styles.optionSubtitle}>Reportar</Text>
                 </TouchableOpacity>
               </View>
             </>
           ) : modo === "admin" ? (
-            <>
-              <View style={styles.loginHeader}>
-                <TouchableOpacity onPress={handleVolver} style={styles.backButton}>
-                  <Text style={styles.backButtonText}>← Volver</Text>
-                </TouchableOpacity>
-                <Text style={styles.loginTitle}>Acceso Administrador</Text>
-                <View style={{ width: 60 }} />
-              </View>
-
-              <View style={styles.loginForm}>
-                <View style={styles.userInfo}>
-                  <Text style={styles.userInfoLabel}>Administrador:</Text>
-                  <Text style={styles.userInfoName}>{ADMIN_NAME}</Text>
+            <KeyboardAvoidingView
+              style={styles.keyboardWrap}
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
+              keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+            >
+              <ScrollView
+                style={styles.formScroll}
+                contentContainerStyle={styles.formScrollContent}
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={false}
+              >
+                <View style={styles.loginHeader}>
+                  <TouchableOpacity onPress={handleVolver} style={styles.backButton}>
+                    <Text style={styles.backButtonText}>← Volver</Text>
+                  </TouchableOpacity>
+                  <Text style={styles.loginTitle}>Admin</Text>
+                  <View style={{ width: 60 }} />
                 </View>
 
-                <View style={styles.inputGroup}>
-                  <Text style={styles.label}>Código de Acceso</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={code}
-                    onChangeText={setCode}
-                    placeholder="Ingresa el código"
-                    placeholderTextColor={COLORS.gris}
-                    secureTextEntry
-                    autoCapitalize="none"
-                    editable={!loading}
-                    autoFocus
-                  />
-                </View>
+                <View style={styles.loginForm}>
+                  <View style={styles.userInfo}>
+                    <Text style={styles.userInfoLabel}>Administrador:</Text>
+                    <Text style={styles.userInfoName}>{ADMIN_NAME}</Text>
+                  </View>
 
-                <TouchableOpacity
-                  style={[styles.button, loading && styles.buttonDisabled]}
-                  onPress={handleLoginAdmin}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <ActivityIndicator color={COLORS.blanco} />
-                  ) : (
-                    <Text style={styles.buttonText}>Ingresar</Text>
-                  )}
-                </TouchableOpacity>
-              </View>
-            </>
+                  <View style={styles.inputGroup}>
+                    <Text style={styles.label}>Código de Acceso</Text>
+                    <View style={styles.inputRow}>
+                      <TextInput
+                        style={styles.inputConClave}
+                        value={code}
+                        onChangeText={setCode}
+                        placeholder="Ingresa el código"
+                        placeholderTextColor={COLORS.gris}
+                        secureTextEntry={!mostrarClave}
+                        autoCapitalize="none"
+                        editable={!loading}
+                        autoFocus
+                      />
+                      <TouchableOpacity
+                        style={styles.eyeButton}
+                        onPress={() => setMostrarClave((v) => !v)}
+                        hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+                      >
+                        <Ionicons
+                          name={mostrarClave ? "eye-off-outline" : "eye-outline"}
+                          size={24}
+                          color={COLORS.gris}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+
+                  <TouchableOpacity
+                    style={[styles.button, loading && styles.buttonDisabled]}
+                    onPress={handleLoginAdmin}
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <ActivityIndicator color={COLORS.blanco} />
+                    ) : (
+                      <Text style={styles.buttonText}>Ingresar</Text>
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </KeyboardAvoidingView>
           ) : (
             <>
               <View style={styles.loginHeader}>
@@ -192,11 +215,6 @@ export default function LoginPrincipal() {
             </>
           )}
         </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-          <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -211,13 +229,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
+<<<<<<< HEAD
     backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
     paddingVertical: 16,
     paddingHorizontal: 24,
+=======
+    backgroundColor: COLORS.azulClaro,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     alignItems: "center",
     justifyContent: "center",
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
+<<<<<<< HEAD
     shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.15,
     shadowRadius: 12,
@@ -228,21 +253,53 @@ const styles = StyleSheet.create({
     color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 24,
     fontWeight: "900",
+=======
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
+  },
+  headerTitle: {
+    color: COLORS.negro,
+    fontSize: 20,
+    fontWeight: "800",
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     textAlign: "center",
-    marginBottom: 4,
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
+<<<<<<< HEAD
     color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 15,
+=======
+    color: COLORS.negro,
+    fontSize: 13,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "600",
     textAlign: "center",
-    opacity: 0.9,
+    marginTop: 2,
+    opacity: 0.85,
   },
   body: {
     flex: 1,
     padding: 24,
     justifyContent: "center",
+  },
+  bodyForm: {
+    justifyContent: "flex-start",
+    paddingTop: 16,
+  },
+  keyboardWrap: {
+    flex: 1,
+    width: "100%",
+  },
+  formScroll: {
+    flex: 1,
+  },
+  formScrollContent: {
+    flexGrow: 1,
+    paddingBottom: 40,
   },
   welcomeText: {
     color: COLORS.blanco,
@@ -353,6 +410,32 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     letterSpacing: 0.3,
   },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: COLORS.azulMedio,
+    borderWidth: 2,
+    borderColor: COLORS.azulClaro,
+    borderRadius: 16,
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
+  },
+  inputConClave: {
+    flex: 1,
+    paddingVertical: 16,
+    paddingLeft: 20,
+    paddingRight: 12,
+    color: COLORS.blanco,
+    fontSize: 16,
+  },
+  eyeButton: {
+    padding: 12,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   input: {
     backgroundColor: COLORS.reportePrincipal, // Verde medio
     borderWidth: 2,
@@ -395,6 +478,7 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     letterSpacing: 0.5,
   },
+<<<<<<< HEAD
   footer: {
     backgroundColor: COLORS.grisOscuro, // Neutralidad
     paddingVertical: 16,
@@ -424,4 +508,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     opacity: 0.85,
   },
+=======
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
 });

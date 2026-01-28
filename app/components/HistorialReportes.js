@@ -138,8 +138,8 @@ export default function HistorialReportes() {
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTitle}>HISTORIAL</Text>
-            <Text style={styles.headerSubtitle}>Reportes por mes</Text>
+            <Text style={styles.headerTitle}>Historial</Text>
+            <Text style={styles.headerSubtitle}>Por mes</Text>
             {usuarioName ? (
               <Text style={styles.headerUser}>Usuario: {usuarioName}</Text>
             ) : null}
@@ -212,11 +212,6 @@ export default function HistorialReportes() {
         )}
       </View>
 
-      <View style={styles.footer}>
-        <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-        <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-      </View>
-
       <Modal
         visible={selectorVisible}
         transparent
@@ -237,8 +232,8 @@ export default function HistorialReportes() {
                   key={m.key}
                   style={[styles.modalItem, active && styles.modalItemActive]}
                   onPress={() => {
-                    setMesSeleccionado(m);
                     setSelectorVisible(false);
+                    setMesSeleccionado(m);
                   }}
                 >
                   <Text style={[styles.modalItemText, active && styles.modalItemTextActive]}>
@@ -257,6 +252,7 @@ export default function HistorialReportes() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
+<<<<<<< HEAD
     backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
     paddingVertical: 24,
     paddingHorizontal: 24,
@@ -267,6 +263,18 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
     elevation: 8,
+=======
+    backgroundColor: COLORS.azulClaro,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
   },
   headerContent: {
     flexDirection: "row",
@@ -278,20 +286,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerTitle: {
+<<<<<<< HEAD
     color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 26,
     fontWeight: "900",
+=======
+    color: COLORS.negro,
+    fontSize: 20,
+    fontWeight: "800",
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     textAlign: "center",
-    marginBottom: 4,
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
+<<<<<<< HEAD
     color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
     fontSize: 17,
+=======
+    color: COLORS.negro,
+    fontSize: 13,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "600",
     textAlign: "center",
-    marginBottom: 4,
-    opacity: 0.9,
+    marginTop: 2,
+    opacity: 0.85,
   },
   headerUser: {
     color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
@@ -402,6 +420,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.3,
   },
+<<<<<<< HEAD
   footer: {
     backgroundColor: COLORS.grisOscuro, // Neutralidad
     paddingVertical: 24,
@@ -430,6 +449,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     opacity: 0.85,
   },
+=======
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
   modalOverlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.65)",

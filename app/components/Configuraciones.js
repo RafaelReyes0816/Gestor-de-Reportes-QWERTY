@@ -34,8 +34,8 @@ export default function Configuraciones() {
       ]}
     >
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>GESTOR DE DISTURBIOS</Text>
-        <Text style={styles.headerSubtitle}>TARIJA</Text>
+        <Text style={styles.headerTitle}>Gestor de Reportes</Text>
+        <Text style={styles.headerSubtitle}>Tarija</Text>
       </View>
 
       <ScrollView
@@ -82,11 +82,6 @@ export default function Configuraciones() {
           </View>
         </View>
       </ScrollView>
-
-      <View style={styles.footer}>
-        <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-        <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-      </View>
     </SafeAreaView>
   );
 }
@@ -97,28 +92,52 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.fondoGrisOscuro,
   },
   header: {
+<<<<<<< HEAD
     backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
     paddingVertical: 32,
     paddingHorizontal: 20,
     alignItems: "center",
     shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
     shadowOpacity: 0.2,
+=======
+    backgroundColor: COLORS.azulClaro,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    alignItems: "center",
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.12,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
   headerTitle: {
+<<<<<<< HEAD
     color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 28,
+=======
+    color: COLORS.negro,
+    fontSize: 20,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "800",
     textAlign: "center",
-    marginBottom: 4,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
+<<<<<<< HEAD
     color: COLORS.reportePrincipal, // Verde en lugar de negro
     fontSize: 18,
     fontWeight: "500",
+=======
+    color: COLORS.negro,
+    fontSize: 13,
+    fontWeight: "600",
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     textAlign: "center",
+    marginTop: 2,
+    opacity: 0.85,
   },
   scrollContent: {
     flexGrow: 1,
@@ -180,6 +199,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
   },
+<<<<<<< HEAD
   footer: {
     backgroundColor: COLORS.naranja, // Naranja que combina
     paddingVertical: 22,
@@ -204,5 +224,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     textAlign: "center",
   },
+=======
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
 });
 

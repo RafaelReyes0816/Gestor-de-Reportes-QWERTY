@@ -246,8 +246,8 @@ export default function FormularioReportes() {
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <View style={styles.headerTextContainer}>
-            <Text style={styles.headerTitle}>GESTOR DE DISTURBIOS</Text>
-            <Text style={styles.headerSubtitle}>TARIJA</Text>
+            <Text style={styles.headerTitle}>Gestor de Reportes</Text>
+            <Text style={styles.headerSubtitle}>Tarija</Text>
             {usuarioName ? (
               <Text style={styles.headerUser}>Usuario: {usuarioName}</Text>
             ) : null}
@@ -452,11 +452,6 @@ export default function FormularioReportes() {
         </View>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <Text style={styles.footerTitle}>TUS REPORTES SON CONFIDENCIALES</Text>
-        <Text style={styles.footerText}>DESARROLLADO POR: JRRB</Text>
-      </View>
-
       <ModalMensaje
         visible={modalVisible}
         tipo={modalTipo}
@@ -474,6 +469,7 @@ export default function FormularioReportes() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
+<<<<<<< HEAD
     backgroundColor: COLORS.reportePrincipalOscuro, // Color especial para reportes
     paddingVertical: 24,
     paddingHorizontal: 24,
@@ -484,6 +480,18 @@ const styles = StyleSheet.create({
     shadowRadius: 12,
     shadowOffset: { width: 0, height: 6 },
     elevation: 8,
+=======
+    backgroundColor: COLORS.azulClaro,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+    shadowColor: COLORS.negro,
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
   },
   headerContent: {
     flexDirection: "row",
@@ -495,20 +503,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerTitle: {
+<<<<<<< HEAD
     color: COLORS.blanco, // Texto blanco para contraste con púrpura oscuro
     fontSize: 26,
     fontWeight: "900",
+=======
+    color: COLORS.negro,
+    fontSize: 20,
+    fontWeight: "800",
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     textAlign: "center",
-    marginBottom: 4,
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   headerSubtitle: {
+<<<<<<< HEAD
     color: COLORS.blanco, // Texto blanco para contraste con púrpura oscuro
     fontSize: 17,
+=======
+    color: COLORS.negro,
+    fontSize: 13,
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "600",
     textAlign: "center",
-    marginBottom: 4,
-    opacity: 0.9,
+    marginTop: 2,
+    opacity: 0.85,
   },
   headerUser: {
     color: COLORS.blanco, // Texto blanco para contraste con púrpura oscuro
@@ -752,6 +770,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   buttonDisabled: { opacity: 0.6 },
+<<<<<<< HEAD
   footer: {
     backgroundColor: COLORS.grisOscuro, // Neutralidad
     paddingVertical: 26,
@@ -780,5 +799,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     opacity: 0.85,
   },
+=======
+>>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
 });
 
