@@ -252,19 +252,7 @@ export default function HistorialReportes() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
-<<<<<<< HEAD
-    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
-    paddingVertical: 24,
-    paddingHorizontal: 24,
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
-    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
-=======
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro,
     paddingVertical: 16,
     paddingHorizontal: 20,
     borderBottomLeftRadius: 24,
@@ -274,7 +262,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
   },
   headerContent: {
     flexDirection: "row",
@@ -286,26 +273,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerTitle: {
-<<<<<<< HEAD
-    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
-    fontSize: 26,
-    fontWeight: "900",
-=======
-    color: COLORS.negro,
+    color: COLORS.blanco,
     fontSize: 20,
     fontWeight: "800",
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     textAlign: "center",
     letterSpacing: 0.4,
   },
   headerSubtitle: {
-<<<<<<< HEAD
-    color: COLORS.blanco, // Texto blanco para contraste con verde oscuro
-    fontSize: 17,
-=======
-    color: COLORS.negro,
+    color: "rgba(255,255,255,0.9)",
     fontSize: 13,
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "600",
     textAlign: "center",
     marginTop: 2,
@@ -420,37 +396,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.3,
   },
-<<<<<<< HEAD
-  footer: {
-    backgroundColor: COLORS.grisOscuro, // Neutralidad
-    paddingVertical: 24,
-    paddingHorizontal: 24,
-    alignItems: "center",
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: -4 },
-    elevation: 8,
-  },
-  footerTitle: {
-    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
-    fontSize: 18,
-    fontWeight: "900",
-    textAlign: "center",
-    marginBottom: 10,
-    letterSpacing: 0.3,
-  },
-  footerText: {
-    color: COLORS.blanco, // Texto blanco para contraste con gris oscuro
-    fontSize: 14,
-    fontWeight: "600",
-    textAlign: "center",
-    opacity: 0.85,
-  },
-=======
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
   modalOverlay: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.65)",

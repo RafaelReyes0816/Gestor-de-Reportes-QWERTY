@@ -92,15 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.fondoGrisOscuro,
   },
   header: {
-<<<<<<< HEAD
-    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
-    paddingVertical: 32,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-    shadowOpacity: 0.2,
-=======
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro,
     paddingVertical: 16,
     paddingHorizontal: 20,
     alignItems: "center",
@@ -108,33 +100,21 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 24,
     shadowColor: COLORS.negro,
     shadowOpacity: 0.12,
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
   },
   headerTitle: {
-<<<<<<< HEAD
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
-    fontSize: 28,
-=======
-    color: COLORS.negro,
+    color: COLORS.blanco,
     fontSize: 20,
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "800",
     textAlign: "center",
     letterSpacing: 0.4,
   },
   headerSubtitle: {
-<<<<<<< HEAD
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
-    fontSize: 18,
-    fontWeight: "500",
-=======
-    color: COLORS.negro,
+    color: "rgba(255,255,255,0.9)",
     fontSize: 13,
     fontWeight: "600",
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     textAlign: "center",
     marginTop: 2,
     opacity: 0.85,
@@ -195,36 +175,9 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   backButtonText: {
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
+    color: COLORS.reportePrincipal,
     fontSize: 18,
     fontWeight: "700",
   },
-<<<<<<< HEAD
-  footer: {
-    backgroundColor: COLORS.naranja, // Naranja que combina
-    paddingVertical: 22,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: -2 },
-    elevation: 6,
-  },
-  footerTitle: {
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
-    fontSize: 18,
-    fontWeight: "900",
-    textAlign: "center",
-    marginBottom: 10,
-  },
-  footerText: {
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
-    fontSize: 14,
-    fontWeight: "500",
-    textAlign: "center",
-  },
-=======
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
 });
 

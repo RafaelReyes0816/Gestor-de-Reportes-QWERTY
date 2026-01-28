@@ -337,32 +337,7 @@ export default function DashboardAdmin() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
-<<<<<<< HEAD
-    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
-    paddingVertical: 24,
-    paddingHorizontal: 24,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
-    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
-  },
-  headerTitle: {
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
-    fontSize: 22,
-    fontWeight: "900",
-    letterSpacing: 0.5,
-  },
-  headerSubtitle: {
-    color: COLORS.reportePrincipal, // Verde en lugar de negro
-    fontSize: 15,
-=======
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro,
     paddingVertical: 16,
     paddingHorizontal: 20,
     flexDirection: "row",
@@ -377,15 +352,14 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
   headerTitle: {
-    color: COLORS.negro,
+    color: COLORS.blanco,
     fontSize: 20,
     fontWeight: "800",
     letterSpacing: 0.4,
   },
   headerSubtitle: {
-    color: COLORS.negro,
+    color: "rgba(255,255,255,0.9)",
     fontSize: 13,
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
     fontWeight: "600",
     marginTop: 2,
     opacity: 0.85,

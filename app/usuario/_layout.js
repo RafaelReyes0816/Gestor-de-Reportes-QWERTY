@@ -17,17 +17,6 @@ export default function UsuarioLayout() {
         tabBarStyle: {
           backgroundColor: COLORS.fondoGrisOscuro,
           borderTopWidth: 0,
-<<<<<<< HEAD
-          borderTopColor: "rgba(255,255,255,0.1)",
-          height: 70,
-          paddingBottom: 10,
-          paddingTop: 10,
-          shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-          shadowOpacity: 0.2,
-          shadowRadius: 12,
-          shadowOffset: { width: 0, height: -4 },
-          elevation: 10,
-=======
           borderLeftWidth: 0,
           borderRightWidth: 0,
           height: tabBarHeight,
@@ -38,7 +27,6 @@ export default function UsuarioLayout() {
           shadowOpacity: 0,
           shadowRadius: 0,
           overflow: "hidden",
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
         },
         tabBarLabelStyle: {
           fontSize: 12,

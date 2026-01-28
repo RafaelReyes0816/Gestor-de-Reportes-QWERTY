@@ -375,22 +375,7 @@ export default function DetalleReporteAdmin() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: COLORS.fondoGrisOscuro },
   header: {
-<<<<<<< HEAD
-    backgroundColor: COLORS.reportePrincipalOscuro, // Verde oscuro
-    paddingVertical: 20,
-    paddingHorizontal: 24,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    borderBottomLeftRadius: 32,
-    borderBottomRightRadius: 32,
-    shadowColor: COLORS.reportePrincipal, // Verde en lugar de negro
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 8,
-=======
-    backgroundColor: COLORS.azulClaro,
+    backgroundColor: COLORS.reportePrincipalOscuro,
     paddingVertical: 16,
     paddingHorizontal: 20,
     flexDirection: "row",
@@ -403,7 +388,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
->>>>>>> 559dc50bff7f967582ca5b15048fb98bd2dd5778
   },
   backText: {
     color: COLORS.reportePrincipal, // Verde en lugar de negro
