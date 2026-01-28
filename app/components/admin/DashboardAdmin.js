@@ -183,23 +183,25 @@ export default function DashboardAdmin() {
 
       <View style={styles.stats}>
         <View style={styles.statCard}>
-          <Text style={styles.statNumber}>{estadisticas.total}</Text>
+          <Text style={[styles.statNumber, styles.statNumberTotal]}>
+            {estadisticas.total}
+          </Text>
           <Text style={styles.statLabel}>Total</Text>
         </View>
         <View style={styles.statCard}>
-          <Text style={[styles.statNumber, { color: COLORS.naranja }]}>
+          <Text style={[styles.statNumber, styles.statNumberWarning]}>
             {estadisticas.porEstado?.Pendiente || 0}
           </Text>
           <Text style={styles.statLabel}>Pendientes</Text>
         </View>
         <View style={styles.statCard}>
-          <Text style={[styles.statNumber, { color: COLORS.naranja }]}>
+          <Text style={[styles.statNumber, styles.statNumberWarning]}>
             {estadisticas.porEstado?.["En Proceso"] || 0}
           </Text>
           <Text style={styles.statLabel}>En Proceso</Text>
         </View>
         <View style={styles.statCard}>
-          <Text style={[styles.statNumber, { color: COLORS.verde }]}>
+          <Text style={[styles.statNumber, styles.statNumberSuccess]}>
             {estadisticas.porEstado?.Resuelto || 0}
           </Text>
           <Text style={styles.statLabel}>Resueltos</Text>
@@ -402,16 +404,36 @@ const styles = StyleSheet.create({
   },
   statNumber: {
     color: COLORS.blanco,
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: "900",
     letterSpacing: 0.5,
+    textAlign: "center",
+  },
+  statNumberTotal: {
+    color: COLORS.blanco,
+    textShadowColor: "rgba(0,0,0,0.45)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
+  },
+  statNumberWarning: {
+    color: COLORS.naranja,
+    textShadowColor: "rgba(0,0,0,0.45)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
+  },
+  statNumberSuccess: {
+    color: COLORS.verde,
+    textShadowColor: "rgba(0,0,0,0.45)",
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
   },
   statLabel: {
     color: COLORS.blanco,
-    fontSize: 12,
-    marginTop: 6,
+    fontSize: 13,
+    marginTop: 8,
     opacity: 0.9,
     fontWeight: "600",
+    textAlign: "center",
   },
   filters: {
     flexDirection: "row",
